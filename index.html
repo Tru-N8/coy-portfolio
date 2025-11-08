@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coy Ritter | Public Safety Leadership Portfolio</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Apply Inter font and clean scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0d111c; /* Deep Charcoal/Navy */
+        }
+        /* Custom class for the primary accent color - Professional Blue */
+        .accent-text {
+            color: #38bdf8; /* Tailwind sky-400 */
+        }
+        .accent-bg {
+            background-color: #38bdf8;
+        }
+
+        /* --- SLIDESHOW STYLES --- */
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+            overflow: hidden; /* Hide excess slides */
+        }
+        .mySlides {
+            display: none;
+            transition: opacity 0.8s ease-in-out; /* Animation */
+        }
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 4px;
+            user-select: none;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 10;
+        }
+        .next { right: 0; }
+        .prev:hover, .next:hover { background-color: rgba(0,0,0,0.9); }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: #525252;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.4s ease;
+        }
+        .active-dot {
+            background-color: #38bdf8; /* Accent color */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 p-4 sm:p-8 md:p-12">
+
+    <div class="max-w-6xl mx-auto space-y-12">
+
+        <!-- HEADER AND CONTACT SECTION --><header class="text-center pb-8 border-b-2 border-sky-500/50">
+            <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight">COY RITTER</h1>
+            <p class="text-xl sm:text-3xl mt-2 font-light accent-text">Public Safety & Leadership Professional</p>
+            <p class="text-lg mt-4 text-gray-400">
+                Melbourne, FL | coyritter94@gmail.com | <a href="https://www.linkedin.com/in/coy-ritter-a0b805394" class="accent-text hover:underline" target="_blank">LinkedIn</a>
+            </p>
+        </header>
+
+        <!-- EXECUTIVE SUMMARY --><section id="summary" class="p-6 bg-gray-800 rounded-xl shadow-2xl">
+            <h2 class="text-3xl font-bold mb-4 accent-text border-b border-sky-500/50 pb-2">Executive Summary</h2>
+            <p class="text-lg leading-relaxed text-gray-200">
+                Highly credentialed public safety professional based in Melbourne, FL, specializing in strategic leadership, complex investigations, and state-wide training program development. Holds a Master of Science in Leadership with a focus on Homeland Security and Emergency Management. Proven ability to transition seamlessly between correctional probation enforcement, regional security operations management, university public safety direction (Clery/VAWA compliance), and advanced field training. Committed to utilizing **verbal de-escalation** and **trauma-informed** principles to maintain safe and compliant operational environments.
+            </p>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE --><section id="experience">
+            <h2 class="text-3xl font-bold mb-6 accent-text">Professional Experience</h2>
+            <div class="space-y-8">
+                
+                <!-- Experience Item: Correctional Probation Officer --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
+                    <h3 class="text-2xl font-semibold text-sky-300">Correctional Probation Officer</h3>
+                    <p class="text-base text-gray-400 mt-1">Florida Department of Corrections | Sep 24 – Aug 25</p>
+                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
+                        <li>Supervised a caseload of 50+ felony offenders according to standard and special conditions imposed by the courts.</li>
+                        <li>Completed violation reports, affidavits, and draft warrants upon offender violation; arrested offenders for the same.</li>
+                        <li>Referred offenders for court-ordered treatment with partner agencies; coordinated ongoing care to meet offender needs and encourage prosocial and law-abiding behavior.</li>
+                        <li>Assisted offenders in gaining full-time employment and attaining educational, career, parenting, and lifestyle goals.</li>
+                        <li>Graduated as Valedictorian of Class 2024-10 with average test score of 97%; scored 188 out of 190 on SOCE Exam for state certification.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item: Regional Operations Manager --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
+                    <h3 class="text-2xl font-semibold text-sky-300">Regional Operations Manager</h3>
+                    <p class="text-base text-gray-400 mt-1">ARDENT Protection | Jan 2024 – Sep 2024</p>
+                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
+                        <li>Supervised 30 or more employees working 800-1,000 hours at 12-15 sites in Orlando, Daytona Beach, Jacksonville, Tallahassee, Ocala, and Gainesville. Provided direction, mentoring, training, and discipline to security officers</li>
+                        <li>Completed weekly reports for administration, payroll, and scheduling.</li>
+                        <li>Created threat assessments for new, potential, and existing clients</li>
+                        <li>Coordinated with ARDENT management, clients, and local law enforcement for both prevention of and response to emergency situations.</li>
+                        <li>Oversaw (and personally participated in) special projects including workplace violence prevention, hostile termination, and executive protection details.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item: State-wide Field Training Officer --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
+                    <h3 class="text-2xl font-semibold text-sky-300">State-wide Field Training Officer</h3>
+                    <p class="text-base text-gray-400 mt-1">Curtis Protective Services | [Start Date] – [End Date]</p>
+                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
+                        <li>Developed and implemented a standardized Field Training Program used across the state to onboard and certify new security officers.</li>
+                        <li>Mentored over 50 new hires, ensuring proficiency in patrol techniques, emergency response, and conflict resolution before solo assignment.</li>
+                    </ul>
+                </div>
+
+                <!-- Experience Item: Assistant Director of Public Safety --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
+                    <h3 class="text-2xl font-semibold text-sky-300">Assistant Director of Public Safety</h3>
+                    <p class="text-base text-gray-400 mt-1">Harris-Stowe State University | [Start Date] – [End Date]</p>
+                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
+                        <li>Managed daily public safety operations for a major university campus, including event security planning and campus threat assessments.</li>
+                        <li>Oversaw training and policy creation to ensure strict compliance with **Clery Act** and **VAWA** reporting and investigation mandates.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHOTO/VIDEO GALLERY (SLIDESHOW) --><section id="gallery" class="pt-8">
+            <h2 class="text-3xl font-bold mb-6 accent-text">Professional Gallery & Media</h2>
+            
+            <div class="slideshow-container rounded-xl shadow-2xl bg-gray-800 p-4 sm:p-6">
+                
+                <!-- Slide 1: Uniform Portrait --><div class="mySlides fade">
+                    <div class="relative w-full h-0 pb-[75%] bg-gray-900 rounded-lg"> <!-- 4:3 Aspect Ratio Container --><img src="https://placehold.co/800x600/1e3a8a/ffffff?text=Professional+Uniform+Portrait" alt="Coy Ritter in uniform, professional image" class="absolute inset-0 w-full h-full object-cover rounded-lg"/>
+                    </div>
+                    <p class="mt-3 text-base text-gray-400 text-center">Slide 1: Professional Portrait (Law Enforcement/Security Uniform)</p>
+                </div>
+                
+                <!-- Slide 2: FTO Instruction --><div class="mySlides fade">
+                    <div class="relative w-full h-0 pb-[75%] bg-gray-900 rounded-lg">
+                        <img src="https://placehold.co/800x600/047857/ffffff?text=FTO+Instruction+Session" alt="Coy Ritter training staff in field operations" class="absolute inset-0 w-full h-full object-cover rounded-lg"/>
