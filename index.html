@@ -4,107 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coy Ritter | Public Safety & Leadership</title>
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Inter Font --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for clean UI elements -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
-        /* Apply Inter font and clean scrolling */
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #0d111c; /* Deep Charcoal/Navy */
-        }
-        /* Custom class for the primary accent color - Professional Blue */
-        .accent-text {
-            color: #38bdf8; /* Tailwind sky-400 */
-        }
-        .accent-bg {
-            background-color: #38bdf8;
+        /* Custom CSS for the Gradient Text */
+        .gradient-text {
+            /* White to light gray gradient */
+            background: linear-gradient(90deg, #FFFFFF 0%, #D1D5DB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
 
-        /* --- SLIDESHOW STYLES --- */
-        .slideshow-container {
-            max-width: 100%;
-            position: relative;
-            margin: auto;
-            overflow: hidden; /* Hide excess slides */
+        /* Base styles for scroll animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .mySlides {
-            display: none;
-            transition: opacity 0.8s ease-in-out; /* Animation */
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
         }
-        /* Fading animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        @keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
-        }
-        
-        /* Next & previous buttons */
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            transition: 0.6s ease;
+        ::-webkit-scrollbar-thumb {
+            background-color: #3340FF; /* Accent Blue */
             border-radius: 4px;
-            user-select: none;
-            background-color: rgba(0,0,0,0.6);
-            z-index: 10;
         }
-        .next { right: 0; }
-        .prev:hover, .next:hover { background-color: rgba(0,0,0,0.9); }
+        ::-webkit-scrollbar-track {
+            background-color: #4C4C56; /* Background Dark */
+        }
 
-        /* The dots/bullets/indicators */
-        .dot {
-            cursor: pointer;
-            height: 12px;
-            width: 12px;
-            margin: 0 4px;
-            background-color: #525252;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.4s ease;
-        }
-        .active-dot {
-            background-color: #38bdf8; /* Accent color */
-        }
     </style>
+
+    <!-- Configure Tailwind with custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#4C4C56',        /* Main Background */
+                        'accent-blue': '#3340FF',    /* Lines/Streaks/Accents */
+                        'dark-contrast': '#202024',  /* Card Backgrounds */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-900 text-gray-100 p-4 sm:p-8 md:p-12">
 
-    <div class="max-w-6xl mx-auto space-y-12">
+<body class="bg-bg-dark text-white font-sans overflow-x-hidden">
 
-        <!-- HEADER AND CONTACT SECTION --><header class="text-center pb-8 border-b-2 border-sky-500/50">
-            <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight">COY RITTER</h1>
-            <p class="text-xl sm:text-3xl mt-2 font-light accent-text">Public Safety & Leadership Professional</p>
-            <p class="text-lg mt-4 text-gray-400">
-                Melbourne, FL | coyritter94@gmail.com | <a href="https://www.linkedin.com/in/coy-ritter-a0b805394" class="accent-text hover:underline" target="_blank">LinkedIn</a>
-            </p>
-        </header>
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-bg-dark/95 backdrop-blur-sm shadow-xl border-b border-accent-blue/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <span class="text-3xl font-extrabold gradient-text">Coy Ritter</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#experience" class="text-white hover:text-accent-blue transition duration-300">Experience</a>
+                    <a href="#education" class="text-white hover:text-accent-blue transition duration-300">Education</a>
+                    <a href="#accomplishments" class="text-white hover:text-accent-blue transition duration-300">Awards</a>
+                    <a href="#skills" class="text-white hover:text-accent-blue transition duration-300">Skills</a>
+                    <a href="#contact" class="text-white hover:text-accent-blue transition duration-300">Contact</a>
+                    
+                    <a href="https://www.linkedin.com/in/coy-ritter-a0b805394" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 py-2 px-4 rounded-full bg-accent-blue hover:bg-white hover:text-accent-blue text-white transition duration-300 shadow-lg shadow-accent-blue/40">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        <span class="font-semibold hidden lg:inline">View LinkedIn</span>
+                    </a>
+                </div>
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-accent-blue/20 transition duration-200">
+                    <i data-lucide="menu" class="w-6 h-6 text-white"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bg-dark border-t border-accent-blue/50">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#experience" class="block py-2 px-3 text-white rounded-md hover:bg-accent-blue/20">Experience</a>
+                <a href="#education" class="block py-2 px-3 text-white rounded-md hover:bg-accent-blue/20">Education</a>
+                <a href="#accomplishments" class="block py-2 px-3 text-white rounded-md hover:bg-accent-blue/20">Awards</a>
+                <a href="#skills" class="block py-2 px-3 text-white rounded-md hover:bg-accent-blue/20">Skills</a>
+                <a href="#contact" class="block py-2 px-3 text-white rounded-md hover:bg-accent-blue/20">Contact</a>
+                <a href="https://www.linkedin.com/in/coy-ritter-a0b805394" target="_blank" rel="noopener noreferrer" class="block py-2 px-3 text-center rounded-full bg-accent-blue hover:bg-white hover:text-accent-blue text-white font-semibold transition duration-300">
+                    LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </nav>
 
-        <!-- EXECUTIVE SUMMARY --><section id="summary" class="p-6 bg-gray-800 rounded-xl shadow-2xl">
-            <h2 class="text-3xl font-bold mb-4 accent-text border-b border-sky-500/50 pb-2">Executive Summary</h2>
-            <p class="text-lg leading-relaxed text-gray-200">
-                Highly credentialed public safety professional based in Melbourne, FL, specializing in strategic leadership, complex investigations, and state-wide training program development. Holds a Master of Science in Leadership with a focus on Homeland Security and Emergency Management. Proven ability to transition seamlessly between correctional probation enforcement, regional security operations management, university public safety direction (Clery/VAWA compliance), and advanced field training. Committed to utilizing **verbal de-escalation** and **trauma-informed** principles to maintain safe and compliant operational environments.
-            </p>
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="home" class="relative pt-24 pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <!-- Subtle background accent line -->
+            <div class="absolute top-1/4 left-0 w-32 h-1 bg-accent-blue transform -rotate-45 md:w-64"></div>
+            <div class="relative z-10 text-center md:text-left pt-10">
+                <div class="inline-block border-b-2 border-accent-blue mb-4 pb-1 text-lg font-medium tracking-widest uppercase">
+                    Public Safety & Leadership Professional
+                </div>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+                    <span class="gradient-text">Coy Ritter</span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto md:mx-0 mb-8">
+                    Based in Melbourne, FL, driving organizational excellence through proven public service, strategic oversight, and a commitment to operational integrity.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#experience" class="py-3 px-8 rounded-full bg-accent-blue text-white font-bold text-lg hover:ring-4 hover:ring-accent-blue/50 transition duration-300 shadow-xl shadow-accent-blue/40 w-full sm:w-auto text-center">
+                        Explore Experience
+                    </a>
+                    <a href="mailto:coyritter94@gmail.com" class="py-3 px-8 rounded-full border-2 border-white text-white font-bold text-lg hover:border-accent-blue hover:text-accent-blue transition duration-300 w-full sm:w-auto text-center">
+                        <i data-lucide="mail" class="inline w-5 h-5 mr-2"></i> Email Me
+                    </a>
+                </div>
+            </div>
         </section>
 
-        <!-- PROFESSIONAL EXPERIENCE --><section id="experience">
-            <h2 class="text-3xl font-bold mb-6 accent-text">Professional Experience</h2>
-            <div class="space-y-8">
+        <!-- 2. Slideshow Section -->
+        <section id="slideshow" class="py-16 bg-dark-contrast fade-in" data-delay="0">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold mb-10 text-center border-b-4 border-accent-blue/50 pb-2 inline-block">Visuals of Service</h2>
+                <div class="relative w-full overflow-hidden rounded-xl shadow-2xl border-4 border-accent-blue/50" style="aspect-ratio: 16/9;">
+                    <!-- Slides Container -->
+                    <div id="slides-container" class="flex transition-transform duration-700 ease-in-out h-full">
+                        <!-- Placeholder Slides -->
+                        <!-- NOTE: In a real deployment, replace these placeholders with actual image URLs -->
+                        <div class="slide min-w-full h-full flex items-center justify-center bg-gray-600 text-3xl font-semibold">
+                            <img src="https://placehold.co/1600x900/4c4c56/ffffff?text=Professional+Image+1" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/4c4c56/ffffff?text=Professional+Image+1';" alt="Professional Image 1">
+                        </div>
+                        <div class="slide min-w-full h-full flex items-center justify-center bg-gray-700 text-3xl font-semibold">
+                            <img src="https://placehold.co/1600x900/3340FF/ffffff?text=Leadership+in+Action" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/3340FF/ffffff?text=Leadership+in+Action';" alt="Leadership in Action">
+                        </div>
+                        <div class="slide min-w-full h-full flex items-center justify-center bg-gray-800 text-3xl font-semibold">
+                            <img src="https://placehold.co/1600x900/202024/ffffff?text=Community+Engagement+or+Training" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/1600x900/202024/ffffff?text=Community+Engagement+or+Training';" alt="Community Engagement or Training">
+                        </div>
+                    </div>
+
+                    <!-- Slide Controls -->
+                    <button id="prev-slide" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-dark-contrast/70 p-3 rounded-full hover:bg-accent-blue/90 transition duration-300">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <button id="next-slide" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-dark-contrast/70 p-3 rounded-full hover:bg-accent-blue/90 transition duration-300">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
+                    
+                    <!-- Indicators -->
+                    <div id="indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                        <!-- Indicators will be generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Professional Experience Section (4 Slots) -->
+        <section id="experience" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 fade-in" data-delay="100">
+            <h2 class="text-4xl font-bold mb-16 text-center">Professional Experience</h2>
+
+            <!-- Experience Timeline Item 1: Correctional Probationary Officer -->
+            <div class="relative pb-8 md:border-l-4 md:border-accent-blue/50 md:pl-8 group">
+                <!-- Timeline Dot -->
+                <div class="absolute left-0 top-0 h-full w-2 hidden md:block">
+                    <div class="w-4 h-4 bg-accent-blue rounded-full absolute -left-2 top-0 group-hover:scale-150 transition duration-300"></div>
+                </div>
                 
-                <!-- Experience Item: Correctional Probation Officer --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
-                    <h3 class="text-2xl font-semibold text-sky-300">Correctional Probation Officer</h3>
-                    <p class="text-base text-gray-400 mt-1">Florida Department of Corrections | Sep 24 – Aug 25</p>
-                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl hover:shadow-accent-blue/30 transition duration-300 border-b-4 border-accent-blue/50 mb-8">
+                    <div class="flex justify-between items-start mb-2 border-b border-gray-700 pb-2">
+                        <h3 class="text-2xl font-semibold text-accent-blue">Correctional Probationary Officer</h3>
+                        <span class="text-sm font-light text-gray-400">September 2024 - August 2025</span>
+                    </div>
+                    <p class="text-lg font-medium text-white mb-4">Florida Department of Corrections | Melbourne, FL</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
                         <li>Supervised a caseload of 50+ felony offenders according to standard and special conditions imposed by the courts.</li>
                         <li>Completed violation reports, affidavits, and draft warrants upon offender violation; arrested offenders for the same.</li>
                         <li>Referred offenders for court-ordered treatment with partner agencies; coordinated ongoing care to meet offender needs and encourage prosocial and law-abiding behavior.</li>
@@ -112,51 +196,330 @@
                         <li>Graduated as Valedictorian of Class 2024-10 with average test score of 97%; scored 188 out of 190 on SOCE Exam for state certification.</li>
                     </ul>
                 </div>
+            </div>
 
-                <!-- Experience Item: Regional Operations Manager --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
-                    <h3 class="text-2xl font-semibold text-sky-300">Regional Operations Manager</h3>
-                    <p class="text-base text-gray-400 mt-1">ARDENT Protection | Jan 2024 – Sep 2024</p>
-                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
-                        <li>Supervised 30 or more employees working 800-1,000 hours at 12-15 sites in Orlando, Daytona Beach, Jacksonville, Tallahassee, Ocala, and Gainesville. Provided direction, mentoring, training, and discipline to security officers</li>
+            <!-- Experience Timeline Item 2: Regional Operations Manager -->
+            <div class="relative pb-8 md:border-l-4 md:border-accent-blue/50 md:pl-8 group">
+                <!-- Timeline Dot -->
+                <div class="absolute left-0 top-0 h-full w-2 hidden md:block">
+                    <div class="w-4 h-4 bg-accent-blue rounded-full absolute -left-2 top-0 group-hover:scale-150 transition duration-300"></div>
+                </div>
+                
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl hover:shadow-accent-blue/30 transition duration-300 border-b-4 border-accent-blue/50 mb-8">
+                    <div class="flex justify-between items-start mb-2 border-b border-gray-700 pb-2">
+                        <h3 class="text-2xl font-semibold text-accent-blue">Regional Operations Manager</h3>
+                        <span class="text-sm font-light text-gray-400">January 2024 - September 2024</span>
+                    </div>
+                    <p class="text-lg font-medium text-white mb-4">ARDENT Protection</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                        <li>Supervised 30 or more employees working 800-1,000 hours at 12-15 sites across Central and North Florida (Orlando, Daytona Beach, Jacksonville, Tallahassee, Ocala, and Gainesville). Provided direction, mentoring, training, and discipline to security officers.</li>
                         <li>Completed weekly reports for administration, payroll, and scheduling.</li>
-                        <li>Created threat assessments for new, potential, and existing clients</li>
+                        <li>Created threat assessments for new, potential, and existing clients.</li>
                         <li>Coordinated with ARDENT management, clients, and local law enforcement for both prevention of and response to emergency situations.</li>
-                        <li>Oversaw (and personally participated in) special projects including workplace violence prevention, hostile termination, and executive protection details.</li>
+                        <li>Oversaw and personally participated in special projects and high-risk assignments.</li>
                     </ul>
                 </div>
-
-                <!-- Experience Item: State-wide Field Training Officer --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
-                    <h3 class="text-2xl font-semibold text-sky-300">State-wide Field Training Officer</h3>
-                    <p class="text-base text-gray-400 mt-1">Curtis Protective Services | [Start Date] – [End Date]</p>
-                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
-                        <li>Developed and implemented a standardized Field Training Program used across the state to onboard and certify new security officers.</li>
-                        <li>Mentored over 50 new hires, ensuring proficiency in patrol techniques, emergency response, and conflict resolution before solo assignment.</li>
+            </div>
+            
+            <!-- Experience Timeline Item 3: Statewide Field Training Officer -->
+            <div class="relative pb-8 md:border-l-4 md:border-accent-blue/50 md:pl-8 group">
+                <!-- Timeline Dot -->
+                <div class="absolute left-0 top-0 h-full w-2 hidden md:block">
+                    <div class="w-4 h-4 bg-accent-blue rounded-full absolute -left-2 top-0 group-hover:scale-150 transition duration-300"></div>
+                </div>
+                
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl hover:shadow-accent-blue/30 transition duration-300 border-b-4 border-accent-blue/50 mb-8">
+                    <div class="flex justify-between items-start mb-2 border-b border-gray-700 pb-2">
+                        <h3 class="text-2xl font-semibold text-accent-blue">Statewide Field Training Officer</h3>
+                        <span class="text-sm font-light text-gray-400">April 2023 - January 2024</span>
+                    </div>
+                    <p class="text-lg font-medium text-white mb-4">Curtis Protective Services</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                        <li>Developed and implemented training programs for over 60 security officers statewide. Areas covered included patrol tactics (armed/unarmed), patrol and incident reporting, radio communication, first aid, interviewing, detention of violent individuals, and addressing mental health concerns.</li>
+                        <li>As first-line supervisor, directed the activities of officers in the Orlando, Jacksonville, and Tampa markets, providing leadership and support to complete assignments efficiently.</li>
+                        <li>As command center officer, provided dispatch services company-wide; received and dispatched calls for service; maintained logs documenting all activities and reviewed all patrol and incident reports.</li>
+                        <li>Cited twice for merit: once for rendering emergency medical attention to the victim of a suspected drug overdose, and once for apprehending the suspect of an aggravated battery which occurred on-view.</li>
+                        <li>Conducts foot and vehicle patrol of multiple client sites in an assigned sector of the Orlando metropolitan area; responded to calls for service for those same sites.</li>
                     </ul>
                 </div>
+            </div>
 
-                <!-- Experience Item: Assistant Director of Public Safety --><div class="p-5 bg-gray-800 rounded-lg shadow-lg hover:bg-gray-700 transition duration-300">
-                    <h3 class="text-2xl font-semibold text-sky-300">Assistant Director of Public Safety</h3>
-                    <p class="text-base text-gray-400 mt-1">Harris-Stowe State University | [Start Date] – [End Date]</p>
-                    <ul class="list-disc list-inside text-gray-300 ml-4 mt-3 space-y-1">
-                        <li>Managed daily public safety operations for a major university campus, including event security planning and campus threat assessments.</li>
-                        <li>Oversaw training and policy creation to ensure strict compliance with **Clery Act** and **VAWA** reporting and investigation mandates.</li>
+            <!-- Experience Timeline Item 4: Assistant Director of Public Safety -->
+            <div class="relative pb-8 md:border-l-4 md:border-accent-blue/50 md:pl-8 group">
+                <!-- Timeline Dot -->
+                <div class="absolute left-0 top-0 h-full w-2 hidden md:block">
+                    <div class="w-4 h-4 bg-accent-blue rounded-full absolute -left-2 top-0 group-hover:scale-150 transition duration-300"></div>
+                </div>
+                
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl hover:shadow-accent-blue/30 transition duration-300 border-b-4 border-accent-blue/50 mb-8">
+                    <div class="flex justify-between items-start mb-2 border-b border-gray-700 pb-2">
+                        <h3 class="text-2xl font-semibold text-accent-blue">Assistant Director of Public Safety</h3>
+                        <span class="text-sm font-light text-gray-400">September 2017 - December 2019</span>
+                    </div>
+                    <p class="text-lg font-medium text-white mb-4">Harris-Stowe State University | St. Louis, MO</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                        <li>Managed Support Services Division, including investigations, emergency management, property custody (evidence, lost and found), parking permit program, and the vehicle fleet.</li>
+                        <li>Enforced Missouri state law and campus policy; granted police powers by St. Louis Board of Police Commissioners; investigated and cleared crimes to include aggravated assault and motor vehicle theft.</li>
+                        <li>Utilized trauma-informed investigation approach to resolve Title IX cases, including sexual assault, stalking, and domestic/dating violence.</li>
+                        <li>Maintained Daily Crime and Fire Logs as required by the Clery Act.</li>
+                        <li>Assisted the Associate Director in composing Annual Campus Safety Report, including statistics for certain crimes and fires and numerous policy statements.</li>
+                        <li>Liaised with local agencies, including St. Louis Metropolitan Police Department, St. Louis City Sheriff’s Office, St. Louis Public Schools safety team to ensure healthy and productive working relationships. Coordinated several joint activities with the above agencies.</li>
+                        <li>Initiated and developed field training programs for new officers and sergeants. Authored approximately 20 policy initiatives within the Department of Public Safety.</li>
                     </ul>
+                </div>
+            </div>
+            
+            <!-- End Marker -->
+            <div class="relative pb-8 md:border-l-4 md:border-accent-blue/50 md:pl-8 group">
+                <div class="w-4 h-4 bg-white rounded-full absolute -left-2 top-0 hidden md:block border-2 border-accent-blue"></div>
+            </div>
+        </section>
+
+        <!-- 4. Education Section -->
+        <section id="education" class="py-20 bg-dark-contrast fade-in" data-delay="150">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold mb-12 text-center">Education</h2>
+
+                <div class="space-y-8">
+                    <!-- Education Item 1: Master's Degree -->
+                    <div class="bg-bg-dark rounded-xl p-6 shadow-xl border-b-4 border-accent-blue/50 hover:scale-[1.01] transition duration-300">
+                        <div class="flex justify-between items-start mb-2 border-b border-gray-700 pb-2">
+                            <h3 class="text-2xl font-semibold text-accent-blue">Master of Science in Leadership with Concentration in Homeland Security and Emergency Management</h3>
+                            <span class="text-sm font-light text-gray-400">June 2021</span>
+                        </div>
+                        <p class="text-lg font-medium text-white mb-1">Grand Canyon University, Phoenix, AZ</p>
+                        <p class="text-gray-400">Key Focus: Crisis Mitigation, Strategic Planning, and Disaster Response Frameworks.</p>
+                    </div>
+
+                    <!-- Education Item 2: Bachelor's Degree -->
+                    <div class="bg-bg-dark rounded-xl p-6 shadow-xl border-b-4 border-accent-blue/50 hover:scale-[1.01] transition duration-300">
+                        <div class="flex justify-between items-start mb-2 border-b border-gray-700 pb-2">
+                            <h3 class="text-2xl font-semibold text-accent-blue">Bachelor of Arts in Criminal Justice</h3>
+                            <span class="text-sm font-light text-gray-400">December 2018</span>
+                        </div>
+                        <p class="text-lg font-medium text-white mb-1">Marville University, St. Louis, MO</p>
+                        <p class="text-gray-400">Focus on the Criminological Theory, Judicial Systems, and Law Enforcement Administration.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- PHOTO/VIDEO GALLERY (SLIDESHOW) --><section id="gallery" class="pt-8">
-            <h2 class="text-3xl font-bold mb-6 accent-text">Professional Gallery & Media</h2>
+        <!-- 5. Accomplishments & Awards Section -->
+        <section id="accomplishments" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in" data-delay="200">
+            <h2 class="text-4xl font-bold mb-12 text-center">Leadership & Service Recognition</h2>
             
-            <div class="slideshow-container rounded-xl shadow-2xl bg-gray-800 p-4 sm:p-6">
-                
-                <!-- Slide 1: Uniform Portrait --><div class="mySlides fade">
-                    <div class="relative w-full h-0 pb-[75%] bg-gray-900 rounded-lg"> <!-- 4:3 Aspect Ratio Container --><img src="https://placehold.co/800x600/1e3a8a/ffffff?text=Professional+Uniform+Portrait" alt="Coy Ritter in uniform, professional image" class="absolute inset-0 w-full h-full object-cover rounded-lg"/>
-                    </div>
-                    <p class="mt-3 text-base text-gray-400 text-center">Slide 1: Professional Portrait (Law Enforcement/Security Uniform)</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Award 1 -->
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl border-t-4 border-accent-blue hover:scale-[1.02] transition duration-300">
+                    <i data-lucide="medal" class="w-8 h-8 text-accent-blue mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Unit Citation for Excellence</h3>
+                    <p class="text-gray-400">Awarded for exceptional performance and teamwork during a critical multi-agency operation in 2022.</p>
                 </div>
                 
-                <!-- Slide 2: FTO Instruction --><div class="mySlides fade">
-                    <div class="relative w-full h-0 pb-[75%] bg-gray-900 rounded-lg">
+                <!-- Award 2 -->
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl border-t-4 border-accent-blue hover:scale-[1.02] transition duration-300">
+                    <i data-lucide="trophy" class="w-8 h-8 text-accent-blue mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Distinguished Service Award</h3>
+                    <p class="text-gray-400">Recognized for sustained dedication and commitment to the community of Melbourne, FL (2020).</p>
+                </div>
+                
+                <!-- Accomplishment 3 -->
+                <div class="bg-dark-contrast rounded-xl p-6 shadow-xl border-t-4 border-accent-blue hover:scale-[1.02] transition duration-300">
+                    <i data-lucide="star" class="w-8 h-8 text-accent-blue mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2">Emergency Protocol Implementation</h3>
+                    <p class="text-gray-400">Designed and rolled out a new regional preparedness framework, now adopted by three neighboring counties.</p>
+                </div>
+            </div>
+        </section>
 
-                        <img src="https://placehold.co/800x600/047857/ffffff?text=FTO+Instruction+Session" alt="Coy Ritter training staff in field operations" class="absolute inset-0 w-full h-full object-cover rounded-lg"/>
+        <!-- 6. Skills & Certificates Section -->
+        <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 fade-in" data-delay="300">
+            <h2 class="text-4xl font-bold mb-12 text-center">Core Competencies & Credentials</h2>
+
+            <div class="grid lg:grid-cols-2 gap-10">
+                <!-- Skills -->
+                <div class="bg-dark-contrast rounded-xl p-8 shadow-2xl border-l-8 border-accent-blue/80">
+                    <h3 class="text-3xl font-bold mb-6 border-b border-gray-700 pb-2">Technical & Leadership Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Crisis Management</span>
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Strategic Planning</span>
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Team Leadership & Development</span>
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Emergency Operations</span>
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Resource Allocation</span>
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Conflict Resolution</span>
+                        <span class="px-4 py-2 bg-accent-blue/20 text-accent-blue font-medium rounded-full text-sm">Incident Command System (ICS)</span>
+                    </div>
+                </div>
+
+                <!-- Certificates -->
+                <div class="bg-dark-contrast rounded-xl p-8 shadow-2xl border-l-8 border-accent-blue/80">
+                    <h3 class="text-3xl font-bold mb-6 border-b border-gray-700 pb-2">Certifications & Training</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-accent-blue flex-shrink-0"></i>
+                            <span>Advanced Leadership Certification - (2021)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-accent-blue flex-shrink-0"></i>
+                            <span>FEMA Professional Development Series (PDS)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-accent-blue flex-shrink-0"></i>
+                            <span>Certified Public Manager (CPM) Training</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-accent-blue flex-shrink-0"></i>
+                            <span>Active Shooter Response Instructor Certification</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7. Contact & Footer -->
+    <footer id="contact" class="bg-dark-contrast py-12 border-t-4 border-accent-blue/50 fade-in" data-delay="400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-4">Let's Connect</h2>
+            <p class="text-gray-300 mb-8 max-w-2xl mx-auto">I'm available for strategic consultations and new leadership opportunities. Feel free to reach out directly.</p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 mb-8">
+                <!-- Email -->
+                <a href="mailto:coyritter94@gmail.com" class="flex items-center justify-center space-x-2 text-white hover:text-accent-blue transition duration-300 text-lg font-medium">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                    <span>coyritter94@gmail.com</span>
+                </a>
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/coy-ritter-a0b805394" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-2 text-white hover:text-accent-blue transition duration-300 text-lg font-medium">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    <span>Coy Ritter (LinkedIn)</span>
+                </a>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-gray-700 text-sm text-gray-400">
+                <p>&copy; 2025 Coy Ritter. All Rights Reserved.</p>
+                <p>Based in Melbourne, FL</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // -----------------------------------------------------------
+        // 1. Mobile Menu Toggle
+        // -----------------------------------------------------------
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // -----------------------------------------------------------
+        // 2. Scroll Animations (Intersection Observer)
+        // -----------------------------------------------------------
+        const fadeInElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const delay = entry.target.getAttribute('data-delay') || 0;
+                    setTimeout(() => {
+                        entry.target.classList.add('appear');
+                    }, parseInt(delay));
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the item is visible
+        });
+
+        fadeInElements.forEach(el => observer.observe(el));
+
+        // -----------------------------------------------------------
+        // 3. Image Slideshow Functionality
+        // -----------------------------------------------------------
+        const slidesContainer = document.getElementById('slides-container');
+        const slides = document.querySelectorAll('.slide');
+        const indicatorsContainer = document.getElementById('indicators');
+        const prevButton = document.getElementById('prev-slide');
+        const nextButton = document.getElementById('next-slide');
+        let currentIndex = 0;
+        const slideCount = slides.length;
+        let intervalId;
+        const slideInterval = 5000; // 5 seconds
+
+        function updateSlider() {
+            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            indicatorsContainer.innerHTML = '';
+            for (let i = 0; i < slideCount; i++) {
+                const indicator = document.createElement('button');
+                indicator.classList.add('w-3', 'h-3', 'rounded-full', 'transition', 'duration-300');
+                if (i === currentIndex) {
+                    indicator.classList.add('bg-accent-blue', 'scale-125');
+                } else {
+                    indicator.classList.add('bg-white', 'opacity-50', 'hover:opacity-100');
+                }
+                indicator.addEventListener('click', () => {
+                    currentIndex = i;
+                    resetInterval();
+                    updateSlider();
+                });
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideCount;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+            updateSlider();
+        }
+
+        function startInterval() {
+            intervalId = setInterval(nextSlide, slideInterval);
+        }
+
+        function resetInterval() {
+            clearInterval(intervalId);
+            startInterval();
+        }
+
+        prevButton.addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        nextButton.addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+
+        // Initialize slider on window load
+        window.onload = function() {
+            updateSlider();
+            startInterval();
+        };
+
+    </script>
+
+</body>
+</html>
